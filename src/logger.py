@@ -28,4 +28,3 @@ logging.basicConfig(
     
     level=logging.INFO,  # Set the logging level to INFO (you can log messages at INFO level or higher)
 )
- 

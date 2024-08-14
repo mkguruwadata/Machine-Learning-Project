@@ -1,5 +1,5 @@
 import sys  # Importing the sys module to access system-specific parameters and functions
-import logging  # Importing the logging module to log messages
+from logger import logging
 
 # The error_message_detail function extracts the file name and line number where the error occurred, along with the error message itself.
 def error_message_detail(error, error_detail: sys):
@@ -12,10 +12,11 @@ def error_message_detail(error, error_detail: sys):
 
 # CustomException class is designed to create a more descriptive exception, which includes details about where the error occurred in the code.
 class CustomException(Exception):
-    def __init__(self, error, error_detail: sys):  # Initialize the custom exception class with the actual error and error details
-        super().__init__(str(error))  # Call the parent class (Exception) constructor with the error message
-        self.error_message = error_message_detail(error, error_detail=error_detail)  # Store a detailed error message with additional context
+    def __init__(self, error_message, error_detail: sys):  # Initialize the custom exception class with the actual error and error details
+        super().__init__(error_message)  # Call the parent class (Exception) constructor with the error message
+        self.error_message = error_message_detail(error_message, error_detail=error_detail)  # Store a detailed error message with additional context
 
     def __str__(self):
         return self.error_message  # Define what to return when the exception is printed: the detailed error message
+
 
